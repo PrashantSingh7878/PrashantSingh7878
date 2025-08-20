@@ -2,8 +2,8 @@ name: Generate Snake
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # daily refresh
-  workflow_dispatch:       # manual trigger
+    - cron: "0 0 * * *"   # runs every day at midnight
+  workflow_dispatch:       # allow manual trigger
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Generate Snake
         uses: Platane/snk@v3
         with:
-          github_user_name: PrashantSingh7878
+          github_user_name: PrashantSingh7878   # apna username daalo
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
@@ -26,6 +26,5 @@ jobs:
         with:
           target_branch: output
           build_dir: dist
-      env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
